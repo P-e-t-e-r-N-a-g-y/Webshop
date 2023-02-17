@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+    font-family: Permanent Marker, sans-serif;
+    font-size: 1.5rem;
+}
+
+.nav-bar-container {
+    position: absolute;
+    display: flex;
+    background-color: black;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 0rem 2rem;
+    gap: 1rem;
+    z-index: 2;
+}
+
+.nav-bar-left {
+    margin-right: auto;
+}
+
+.nav-bar-center {
+    display: flex;
+    gap: 2rem;
+    margin: auto;
+}
+
+.nav-bar-right {
+    display: flex;
+    gap: 2rem;
+    margin-left: auto;
+}
+
+.nav-bar-element {
+    display: flex;
+    text-decoration: none;
+    color: white;
+}
+
+.icons {
+    width: 2rem;
+    margin: auto;
+}
+
+.login-box {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 15px;
+    margin: auto;
+    width: 20%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255);
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    z-index: 1;
+}
+
+.login-box-element {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 1rem;
+    width: 90%;
+}
+
+.login-enter {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    justify-content: center;
+}
+
+.close-btn {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    width: 10%;
+}
+
+.close-btn:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.close-btn:active{
+    transform: scale(1);
+}
+
+.login-btn {
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem;
+    color: black;
+}
+
+.img-container {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 100vh;
+
+}
+
+.img {
+    position: absolute;
+    width: 100%;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    align-items: center;
+    top: 45%;
+    font-size: 4rem;
+    padding: 2rem;
+    color: white;
+
+}
+
+.prev {
+    left: 0%;
+}
+
+.next {
+    right: 0%;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev:hover {
+    border-radius: 0 15px 15px 0;
+}
+
+.next:hover {
+    border-radius:  15px 0 0 15px;
+}
+
+.dot {
+    position: absolute;
+    display: inline-block;
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    background-color: white;
+    border-radius: 50%;
+    top: 95%;
+    bottom: 5%;
+    left: 50%;
+}
+
+.dot1 {
+    left: 48%;
+}
+
+.dot2 {
+    left: 50%;
+}
+
+.dot3 {
+    left: 52%;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 2s;
+    width: 100%;
+    position: relative;
+}
+
+.title {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+}
