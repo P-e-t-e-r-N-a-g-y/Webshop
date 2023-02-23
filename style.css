@@ -8,6 +8,10 @@
     box-sizing: border-box;
 }
 
+:root {
+    --font-color: rgb(220, 220, 220);
+}
+
 body {
     text-align: center;
     font-family: Permanent Marker, sans-serif;
@@ -34,25 +38,46 @@ body {
 
 .nav-bar-center {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     margin: auto;
 }
 
 .nav-bar-right {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     margin-left: auto;
 }
 
 .nav-bar-element {
     display: flex;
+    border: none;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
+    font-family: Permanent Marker, sans-serif;
+    gap: 1rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    color: rgb(220, 220, 220);
+}
+
+.nav-bar-element:hover{
     color: white;
+    cursor: pointer;
+}
+
+.icons:hover{
+    transform: scale(1.1);
 }
 
 .icons {
     width: 2rem;
     margin: auto;
+}
+
+.login-title{
+    font-size: 1.5rem;
 }
 
 .login-box {
@@ -78,6 +103,12 @@ body {
     width: 90%;
 }
 
+.login-text {
+    border-radius: 5px;
+    height: 2rem;
+    font-family: Arial, sans-serif;
+}
+
 .login-enter {
     font-size: 1.5rem;
     padding: 0.5rem;
@@ -97,17 +128,6 @@ body {
 }
 .close-btn:active{
     transform: scale(1);
-}
-
-.login-btn {
-    display: flex;
-    font-size: 1.5rem;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    gap: 0.3rem;
-    padding: 0.2rem;
-    color: black;
 }
 
 .img-container {
