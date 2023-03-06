@@ -25,7 +25,7 @@ request.addEventListener('load', function() {
 
 // Basket items counter
 function counterIncrement () {
-    let basketCounter = document.getElementById('counter');
+    let basketCounter = document.querySelector('.counter');
     let addBasket = document.querySelectorAll('.add-basket');
     let counter = 0;
 
