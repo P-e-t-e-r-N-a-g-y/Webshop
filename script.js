@@ -1,18 +1,4 @@
 'use strict';
-// Login
-let loginBox = document.getElementById('login-box');
-let main = document.getElementById('main');
-
-document.querySelector('.login-btn').addEventListener('click', () => {
-    loginBox.style.display = 'block';
-    main.style.opacity = 0.4;
-})
-
-document.querySelector('.close-btn').addEventListener('click', () => {
-    loginBox.style.display = 'none';
-    main.style.opacity = 1;
-})
-
 // Slideshow
 let slideIndex = 1;
 showSlides(slideIndex);
