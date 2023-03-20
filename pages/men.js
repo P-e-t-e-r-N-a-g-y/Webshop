@@ -11,6 +11,7 @@ function loadData() {
             <img class="flex-element flex-element-top" src="${data.men[i].img}" alt="image">
             <p class="flex-element flex-element-bottom">$${data.men[i].price}</p>
             <button class="flex-element flex-element-bottom add-basket">Add to Basket</button>
+            <span class="flex-element flex-element-bottom add-favourite">🤍</span>
     `;
     container.appendChild(cards);
     cards.innerHTML = html;
