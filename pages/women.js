@@ -20,8 +20,6 @@ function loadData() {
 
 loadData();
 // Basket items counter
-
-
 function addToBasket () {
     const addBasket = document.querySelectorAll('.add-basket');
 

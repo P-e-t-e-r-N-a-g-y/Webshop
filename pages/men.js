@@ -1,5 +1,4 @@
 'use strict';   
-let counter = 0;
 
 function loadData() {
     for(let i = 0; i < data.men.length; i++){
@@ -20,43 +19,48 @@ function loadData() {
 };
 
 loadData();
-// Basket items counter
-
-
+// Add to Basket
 function addToBasket () {
     const addBasket = document.querySelectorAll('.add-basket');
 
     for(let i = 0; i < addBasket.length; i++){
         addBasket[i].addEventListener('click', () => {
-            counter++
-            basketCounter.textContent = `${db.length+1}`;
-            db.push(data.men[i]);
-            localStorage.setItem('items',JSON.stringify(db));
+            addToDb(i);
+            addedItemsCounter(i);
+            location.reload();
         });
     }
 };
+// Basket items counter
+function addedItemsCounter (i) {
+    for(let k = 0; k < db.length; k++){
+        if(db[k].id === data.men[i].id){
+            db[k].counter += 1;
+            localStorage.setItem('items',JSON.stringify(db));
+            break;
+        }
+    }
+}
 
-// const setCookie = function (name, item){
-
-//   let cookieValue = '';
-//   let expire = '';
-//   let period = '';
-
-//   cookieValue = `${name}=${JSON.stringify(item)}; path=/;`;
-  
-//   period = 365;
-//   expire = new Date();
-//   expire.setTime(expire.getTime() + 1000 * 3600 * 24 * period);
-//   expire.toUTCString();
-//   cookieValue += `expires=${expire};`;
-
-//   document.cookie = cookieValue;
-// };
-
-// const item = {
-//   id: 11,
-//   path: 'men'
-// }
-
-// setCookie('items', item);
-// const todoList = localStorage.getItem('.todo') ? JSON.parse(localStorage.getItem('.todo')) : [];
+function addToDb (i) {
+    if(db.length === 0){
+        db.push(data.men[i]);
+        db[0].counter = 0;
+        localStorage.setItem('items', JSON.stringify(db));
+    }
+    else{
+        let select = false;
+        for(let k = 0; k < db.length; k++){
+            if(db[k].id === data.men[i].id){
+                select = true;
+                break;
+            }
+        }
+        if(select === false){
+            db.push(data.men[i]);
+            db[db.length-1].counter = 0;
+            localStorage.setItem('items', JSON.stringify(db));
+        }
+        
+    }  
+}
