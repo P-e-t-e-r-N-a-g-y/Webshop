@@ -1,5 +1,4 @@
-'use strict';
-let counter = 0;
+'use strict';   
 
 function loadData() {
     for(let i = 0; i < data.women.length; i++){
@@ -8,9 +7,14 @@ function loadData() {
         cards.className = 'flex-box';
 
         const html = `
-            <img class="flex-element flex-element-top" src="${data.women[i].img}" alt="image">
-            <p class="flex-element flex-element-bottom">$${data.women[i].price}</p>
-            <button class="flex-element flex-element-bottom add-basket">Add to Basket</button>
+        <div class="flex-element-top">
+            <img class="flex-element-img" src="${data.women[i].img}" alt="image">
+        </div>
+        <div class="flex-element-bottom">
+            <p class="flex-element price">$${data.women[i].price}</p>
+            <button class=" flex-element add-basket">Add to Basket</button>
+            <button onclick="toggle()" class=" flex-element add-favourite">🤍</button>
+        </div>
     `;
     container.appendChild(cards);
     cards.innerHTML = html;
@@ -19,19 +23,48 @@ function loadData() {
 };
 
 loadData();
-// Basket items counter
+// Add to Basket
 function addToBasket () {
     const addBasket = document.querySelectorAll('.add-basket');
 
     for(let i = 0; i < addBasket.length; i++){
         addBasket[i].addEventListener('click', () => {
-            counter++
-            basketCounter.textContent = `${db.length+1}`;
-            db.push(data.women[i]);
-            localStorage.setItem('items',JSON.stringify(db));
+            addToDb(i);
+            addedItemsCounter(i);
+            location.reload();
         });
     }
 };
-
-
-
+// Basket items counter
+function addedItemsCounter (i) {
+    for(let k = 0; k < db.length; k++){
+        if(db[k].id === data.women[i].id){
+            db[k].counter += 1;
+            localStorage.setItem('items',JSON.stringify(db));
+            break;
+        }
+    }
+}
+// Add to local storage
+function addToDb (i) {
+    if(db.length === 0){
+        db.push(data.women[i]);
+        db[0].counter = 0;
+        localStorage.setItem('items', JSON.stringify(db));
+    }
+    else{
+        let select = false;
+        for(let k = 0; k < db.length; k++){
+            if(db[k].id === data.women[i].id){
+                select = true;
+                break;
+            }
+        }
+        if(select === false){
+            db.push(data.women[i]);
+            db[db.length-1].counter = 0;
+            localStorage.setItem('items', JSON.stringify(db));
+        }
+        
+    }  
+}

@@ -1,4 +1,4 @@
-let counter = 0;
+const delButton = document.querySelector('.delete-button');
 // Load the basket items from local storage
 function loadData() {
     for(let i = 0; i < db.length; i++){
@@ -17,7 +17,7 @@ function loadData() {
         <div class="right-basket-element">
             <div class="basket-item-counter">
                 <button class="basket-item-counter-button minus">-</button>
-                <input class="basket-item-text" name="${db[i].counter}" type="text">
+                <span class="basket-item-text">${db[i].counter}</span>
                 <button class="basket-item-counter-button plus">+</button>
             </div>
             <p class="basket-flex-element">$${sumitems}</p>
@@ -34,8 +34,16 @@ function loadData() {
     containerRight.innerHTML = htmlTotalAmount;
     }
 };
+// Check your basket is empty
+if(db.length === 0){
+    const emptyBasket = '<h1>Your Basket is empty</h1>';
+    const container = document.querySelector('.basket-flex-container');
 
- loadData();
+    container.innerHTML = emptyBasket;
+}
+else{
+    loadData();
+}
 
 function basketTotalAmount() {
     let sum = 0;
@@ -45,4 +53,12 @@ function basketTotalAmount() {
     }
 
     return sum;
+}
+
+delButton.addEventListener('click', delBasketItems);
+
+function delBasketItems(){
+    localStorage.removeItem('items');
+    location.reload();
+
 }
