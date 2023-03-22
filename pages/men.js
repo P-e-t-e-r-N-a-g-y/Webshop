@@ -7,10 +7,14 @@ function loadData() {
         cards.className = 'flex-box';
 
         const html = `
-            <img class="flex-element flex-element-top" src="${data.men[i].img}" alt="image">
-            <p class="flex-element flex-element-bottom">$${data.men[i].price}</p>
-            <button class="flex-element flex-element-bottom add-basket">Add to Basket</button>
-            <span class="flex-element flex-element-bottom add-favourite">🤍</span>
+        <div class="flex-element-top">
+            <img class="flex-element-img" src="${data.men[i].img}" alt="image">
+        </div>
+        <div class="flex-element-bottom">
+            <p class="flex-element price">$${data.men[i].price}</p>
+            <button class=" flex-element add-basket">Add to Basket</button>
+            <button onclick="toggle()" class=" flex-element add-favourite">🤍</button>
+        </div>
     `;
     container.appendChild(cards);
     cards.innerHTML = html;
@@ -41,7 +45,7 @@ function addedItemsCounter (i) {
         }
     }
 }
-
+// Add to local storage
 function addToDb (i) {
     if(db.length === 0){
         db.push(data.men[i]);
