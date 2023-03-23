@@ -1,4 +1,5 @@
 const delButton = document.querySelector('.delete-button');
+
 // Load the basket items from local storage
 function loadData() {
     for(let i = 0; i < db.length; i++){
@@ -34,19 +35,6 @@ function loadData() {
     containerRight.innerHTML = htmlTotalAmount;
     }
 };
-// Check your basket is empty
-if(db.length === 0){
-    const emptyBasket = '<h1>Your Basket is empty</h1>';
-    const container = document.querySelector('.basket-flex-container');
-
-    container.innerHTML = emptyBasket;
-}
-else{
-    window.onload = () =>{
-        loadData();
-        manageBasketItemsNumber();
-    }
-}
 
 function basketTotalAmount() {
     let sum = 0;
@@ -57,11 +45,6 @@ function basketTotalAmount() {
 
     return sum;
 }
-
-delButton.addEventListener('click', () => {
-    localStorage.removeItem('items');
-    location.reload();
-});
 
 function manageBasketItemsNumber() {
     const plusButton = document.querySelectorAll('.plus');
@@ -88,3 +71,39 @@ function manageBasketItemsNumber() {
         });
     }
 }
+
+// Check your basket is empty
+if(db.length === 0){
+    const emptyBasket = '<h1>Your Basket is empty</h1>';
+    const container = document.querySelector('.basket-flex-container');
+
+    container.innerHTML = emptyBasket;
+}
+else{
+    window.onload = () =>{
+        loadData();
+        manageBasketItemsNumber();
+    }
+}
+
+delButton.addEventListener('click', () => {
+    const popUp = document.querySelector('.popup');
+    const yesBtn = document.querySelector('.yes-button');
+    const noBtn = document.querySelector('.no-button');
+    const main = document.querySelector('main');
+
+    popUp.style.display = 'block';
+    main.style.opacity = 0.1;
+
+    yesBtn.addEventListener('click', () => {
+        localStorage.removeItem('items');
+        location.reload();
+        popUp.style.display = 'none';
+        main.style.opacity = 1;
+    });
+
+    noBtn.addEventListener('click', () => {
+        popUp.style.display = 'none';
+        main.style.opacity = 1;
+    });
+});

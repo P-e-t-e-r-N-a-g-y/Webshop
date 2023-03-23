@@ -214,20 +214,22 @@ body {
     grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
     margin: 1rem;
-    
 }
 
 .flex-box {
     display: flex;
     flex-direction: column;
     background-color: #dfdfdf83;
-    padding: 0 0 1rem;
+    padding: 2rem;
     height: 100%;
     width: 100%;
+
 }
 
 .flex-element-img {
+    height: 500px;
     width: 100%;
+    object-fit: cover;
 }
 
 .flex-element-top {
@@ -281,7 +283,7 @@ body {
 }
 
 .basket-top-img{
-    width: 2rem;
+    width: 1rem;
 }
 
 .basket-left {
@@ -309,6 +311,8 @@ body {
     align-items: center;
     justify-content: center;
     height: 100%;
+    width: 100px;
+    object-fit: cover;
     border: 1px solid black;
 }
 
@@ -345,4 +349,27 @@ body {
 .basket-right-amount {
     padding: 2rem;
     border: 1px solid black;
+}
+
+/* Popup */
+.popup {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    background-color: white;
+    border: 1px solid black;
+    z-index: 1;
+}
+
+.popup-elements {
+    position: relative;
+    padding: 1rem 2rem;
+}
+
+.popup-elements-button {
+    font-family: Permanent Marker, sans-serif;
+    margin: 0.5rem 5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
 }
