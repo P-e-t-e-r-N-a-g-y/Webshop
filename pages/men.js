@@ -22,7 +22,9 @@ function loadData() {
     addToBasket();
 };
 
-loadData();
+window.onload = () => {
+    loadData();
+}
 // Add to Basket
 function addToBasket () {
     const addBasket = document.querySelectorAll('.add-basket');

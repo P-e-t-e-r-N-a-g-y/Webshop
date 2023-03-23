@@ -312,6 +312,10 @@ body {
     border: 1px solid black;
 }
 
+.basket-flex-element {
+    width: 8rem;
+}
+
 .right-basket-element {
     display: flex;
     align-items: center;
@@ -326,6 +330,10 @@ body {
     align-items: center;
     height: 1rem;
     gap: 1rem;
+}
+
+.basket-item-text {
+    width: 5rem;
 }
 
 .basket-item-counter-button {
