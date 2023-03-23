@@ -96,6 +96,7 @@ const data = {
 };
 
 const db = localStorage.getItem('items')?JSON.parse(localStorage.getItem('items')):[];
+const dbFav = localStorage.getItem('favourite')?JSON.parse(localStorage.getItem('favourite')):[];
 const basketCounter = document.querySelector('.counter');
 const allItem = counterSum();
 basketCounter.textContent = `${allItem}`;

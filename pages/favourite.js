@@ -1,31 +1,28 @@
 'use strict';   
 
 function loadData() {
-    for(let i = 0; i < data.men.length; i++){
+    for(let i = 0; i < dbFav.length; i++){
         const container = document.querySelector('.flex-container');
         const cards = document.createElement('div');
         cards.className = 'flex-box';
 
         const html = `
         <div class="flex-element-top">
-            <img class="flex-element-img" src="${data.men[i].img}" alt="image">
+            <img class="flex-element-img" src="${dbFav[i].img}" alt="image">
         </div>
         <div class="flex-element-bottom">
-            <p class="flex-element price">$${data.men[i].price}</p>
+            <p class="flex-element price">$${dbFav[i].price}</p>
             <button class=" flex-element add-basket">Add to Basket</button>
-            <button class=" flex-element add-favourite">🤍</button>
+            <button class=" flex-element add-favourite">❤</button>
         </div>
     `;
     container.appendChild(cards);
     cards.innerHTML = html;
     }
     addToBasket();
-    addToFav();
+    checkFavBtns();
 };
 
-window.onload = () => {
-    loadData();
-}
 // Add to Basket
 function addToBasket () {
     const addBasket = document.querySelectorAll('.add-basket');
@@ -72,17 +69,31 @@ function addToDb (i) {
     }  
 }
 
-function addToFav() {
-    const addFav = document.querySelectorAll('.add-favourite');
+function checkFavBtns(){
+    const favBtn = document.querySelectorAll('.add-favourite');
 
-    for(let i = 0; i < addFav.length; i++){
-        addFav[i].addEventListener('click', () => {
-            addToDbFav(i);
+    for(let i = 0; i < favBtn.length; i++){
+        favBtn[i].addEventListener('click', () => {
+            removeFromDbFav(i);
+            location.reload();
         });
     }
 }
 
-function addToDbFav(i) {
-    dbFav.push(data.men[i]);
+function removeFromDbFav(i) {
+    dbFav.splice(i,1);
     localStorage.setItem('favourite', JSON.stringify(dbFav));
+}
+
+if(dbFav.length === 0){
+    localStorage.removeItem('favourite');
+    const container = document.querySelector('.main');
+    const emptyFav = '<h1 class="favourite-empty">No added any favourites! 😢</h1>'
+
+    container.innerHTML = emptyFav;
+}
+else{
+    window.onload = () => {
+        loadData();
+    }
 }

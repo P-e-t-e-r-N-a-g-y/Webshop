@@ -74,7 +74,7 @@ function manageBasketItemsNumber() {
 
 // Check your basket is empty
 if(db.length === 0){
-    const emptyBasket = '<h1>Your Basket is empty</h1>';
+    const emptyBasket = '<h1>Your Basket is empty!</h1>';
     const container = document.querySelector('.basket-flex-container');
 
     container.innerHTML = emptyBasket;
