@@ -20,12 +20,9 @@ function loadData() {
     cards.innerHTML = html;
     }
     addToBasket();
-    addToFav();
+    checkFavBtn();
 };
 
-window.onload = () => {
-    loadData();
-}
 // Add to Basket
 function addToBasket () {
     const addBasket = document.querySelectorAll('.add-basket');
@@ -72,17 +69,49 @@ function addToDb (i) {
     }  
 }
 
-function addToFav() {
+function checkFavBtn() {
     const addFav = document.querySelectorAll('.add-favourite');
 
     for(let i = 0; i < addFav.length; i++){
         addFav[i].addEventListener('click', () => {
             addToDbFav(i);
+            addFav[i].textContent = '❤';
         });
     }
 }
 
 function addToDbFav(i) {
-    dbFav.push(data.men[i]);
-    localStorage.setItem('favourite', JSON.stringify(dbFav));
+    let select = false;
+
+    if(dbFav.length === 0){
+        dbFav.push(data.men[i]);
+        dbFav[0].favourite = true;
+        localStorage.setItem('favourite', JSON.stringify(dbFav));
+    }
+    else{
+        for(let k = 0; k < dbFav.length; k++){
+            if(dbFav[k].id === data.men[i].id){
+                select = true;
+                break;
+            }
+        }
+        if(select === false){
+            dbFav.push(data.men[i]);
+            dbFav[dbFav.length-1].favourite = true;
+            localStorage.setItem('favourite', JSON.stringify(dbFav));
+        }
+    }
+}
+
+function removeFromDbFav(i) {
+    for(let k = 0; k < dbFav.length; k++){
+        if(dbFav[k].id === data.men[i].id){
+            dbFav.splice(k,1);
+            localStorage.setItem('favourite', JSON.stringify(dbFav));
+        }
+    }
+}
+
+window.onload = () => {
+    loadData();
 }
