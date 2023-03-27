@@ -2,46 +2,55 @@ const data = {
     'men': [
         {
           "id": 101,
+          "category": "men",
           "img": "../images/men/men1.jpg",
           "price": "50"
         },
         {
           "id": 102,
+          "category": "men",
           "img": "../images/men/men2.jpg",
           "price": "100"
         },
         {
           "id": 103,
+          "category": "men",
           "img": "../images/men/men3.jpg",
           "price": "150"
         },
         {
           "id": 104,
+          "category": "men",
           "img": "../images/men/men4.jpg",
           "price": "50"
         },
         {
           "id": 105,
+          "category": "men",
           "img": "../images/men/men5.jpg",
           "price": "75"
         },
         {
           "id": 106,
+          "category": "men",
           "img": "../images/men/men6.jpg",
           "price": "100"
         },
         {
           "id": 107,
+          "category": "men",
           "img": "../images/men/men7.jpg",
           "price": "50"
         },
         {
           "id": 108,
+          "category": "men",
           "img": "../images/men/men8.jpg",
           "price": "250"
         },
         {
           "id": 109,
+          "category": "men",
           "img": "../images/men/men9.jpg",
           "price": "500"
         }
@@ -49,46 +58,55 @@ const data = {
       'women': [
         {
           "id": 201,
+          "category": "women",
           "img": "../images/women/women1.jpg",
           "price": "50"
         },
         {
           "id": 202,
+          "category": "women",
           "img": "../images/women/women2.jpg",
           "price": "100"
         },
         {
           "id": 203,
+          "category": "women",
           "img": "../images/women/women3.jpg",
           "price": "150"
         },
         {
           "id": 204,
+          "category": "women",
           "img": "../images/women/women4.jpg",
           "price": "50"
         },
         {
           "id": 205,
+          "category": "women",
           "img": "../images/women/women5.jpg",
           "price": "75"
         },
         {
           "id": 206,
+          "category": "women",
           "img": "../images/women/women6.jpg",
           "price": "100"
         },
         {
           "id": 207,
+          "category": "women",
           "img": "../images/women/women7.jpg",
           "price": "50"
         },
         {
           "id": 208,
+          "category": "women",
           "img": "../images/women/women8.jpg",
           "price": "250"
         },
         {
           "id": 209,
+          "category": "women",
           "img": "../images/women/women9.jpg",
           "price": "500"
         }

@@ -138,10 +138,9 @@ body {
 }
 /* Slideshow */
 .img-container {
-    position: relative;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    height: calc(100vh - 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
 }
 
@@ -200,16 +199,42 @@ body {
 }
 
 .fade {
-    animation-name: fade;
-    animation-duration: 2s;
+    height: 90vh;
     width: 100%;
-    position: relative;
+    object-fit: cover;
 }
 
 .title {
     margin-top: 5rem;
     margin-bottom: 5rem;
 
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    gap: 5rem;
+    width: 100%;
+    margin: auto;
+}
+
+.section-img1 {
+    height: 800px;
+    width: 500px;
+    object-fit: cover;
+}
+.section-img2 {
+    height: 800px;
+    width: 500px;
+    object-fit: cover;
+}
+
+footer {
+    height: 5rem;
+    width: 100%;
+    background-color: black;
 }
 
 /* Men page */

@@ -38,7 +38,7 @@ function addToBasket () {
 // Basket items counter
 function addedItemsCounter (i) {
     for(let k = 0; k < db.length; k++){
-        if(db[k].id === data.men[i].id){
+        if(db[k].id === dbFav[i].id){
             db[k].counter += 1;
             localStorage.setItem('items',JSON.stringify(db));
             break;
@@ -48,20 +48,20 @@ function addedItemsCounter (i) {
 // Add to db local storage
 function addToDb (i) {
     if(db.length === 0){
-        db.push(data.men[i]);
+        db.push(dbFav[i]);
         db[0].counter = 0;
         localStorage.setItem('items', JSON.stringify(db));
     }
     else{
         let select = false;
         for(let k = 0; k < db.length; k++){
-            if(db[k].id === data.men[i].id){
+            if(db[k].id === dbFav[i].id){
                 select = true;
                 break;
             }
         }
         if(select === false){
-            db.push(data.men[i]);
+            db.push(dbFav[i]);
             db[db.length-1].counter = 0;
             localStorage.setItem('items', JSON.stringify(db));
         }
