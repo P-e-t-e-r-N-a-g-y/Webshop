@@ -144,6 +144,10 @@ function checkDbFav(i) {
     return select;
 }
 
+if(dbFav.length === 0){
+    localStorage.removeItem('favourite');
+}
+
 window.onload = () => {
     loadData();
 }
