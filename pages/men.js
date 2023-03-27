@@ -1,4 +1,5 @@
 'use strict';   
+let toggleBtn = false;
 
 function loadData() {
     for(let i = 0; i < data.men.length; i++){
@@ -13,12 +14,28 @@ function loadData() {
         <div class="flex-element-bottom">
             <p class="flex-element price">$${data.men[i].price}</p>
             <button class=" flex-element add-basket">Add to Basket</button>
-            <button class=" flex-element add-favourite">🤍</button>
         </div>
-    `;
-    container.appendChild(cards);
-    cards.innerHTML = html;
+        `;
+
+        container.appendChild(cards);
+        cards.innerHTML = html;
+
+        const flexBtns = document.querySelectorAll('.flex-element-bottom');
+        const favHtmlBtn = document.createElement('button');
+        favHtmlBtn.className = 'flex-element add-favourite';
+        const checkDbFavourite = checkDbFav(i);
+
+        flexBtns[i].appendChild(favHtmlBtn);
+
+        if(checkDbFavourite){
+            favHtmlBtn.textContent = '❤';
+        }
+        else{
+            favHtmlBtn.textContent = '🤍';
+        }
+
     }
+    
     addToBasket();
     checkFavBtn();
 };
@@ -71,11 +88,17 @@ function addToDb (i) {
 
 function checkFavBtn() {
     const addFav = document.querySelectorAll('.add-favourite');
-
     for(let i = 0; i < addFav.length; i++){
         addFav[i].addEventListener('click', () => {
-            addToDbFav(i);
-            addFav[i].textContent = '❤';
+            toggleBtn = !toggleBtn;
+            const checkDbFavourite = checkDbFav(i);
+            if(toggleBtn && checkDbFavourite !== true){
+                addToDbFav(i);
+            }
+            else {
+                removeFromDbFav(i)
+            }
+            location.reload();
         });
     }
 }
@@ -85,7 +108,6 @@ function addToDbFav(i) {
 
     if(dbFav.length === 0){
         dbFav.push(data.men[i]);
-        dbFav[0].favourite = true;
         localStorage.setItem('favourite', JSON.stringify(dbFav));
     }
     else{
@@ -97,7 +119,6 @@ function addToDbFav(i) {
         }
         if(select === false){
             dbFav.push(data.men[i]);
-            dbFav[dbFav.length-1].favourite = true;
             localStorage.setItem('favourite', JSON.stringify(dbFav));
         }
     }
@@ -110,6 +131,17 @@ function removeFromDbFav(i) {
             localStorage.setItem('favourite', JSON.stringify(dbFav));
         }
     }
+}
+
+function checkDbFav(i) {
+    let select = false;
+    for(let k = 0; k < dbFav.length; k++){
+        if(dbFav[k].id === data.men[i].id){
+            select = true;
+            break;
+        }
+    }
+    return select;
 }
 
 window.onload = () => {
