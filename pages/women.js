@@ -1,4 +1,5 @@
 'use strict';   
+let toggleBtn = false;
 
 function loadData() {
     for(let i = 0; i < data.women.length; i++){
@@ -13,16 +14,32 @@ function loadData() {
         <div class="flex-element-bottom">
             <p class="flex-element price">$${data.women[i].price}</p>
             <button class=" flex-element add-basket">Add to Basket</button>
-            <button onclick="toggle()" class=" flex-element add-favourite">🤍</button>
         </div>
-    `;
-    container.appendChild(cards);
-    cards.innerHTML = html;
+        `;
+
+        container.appendChild(cards);
+        cards.innerHTML = html;
+
+        const flexBtns = document.querySelectorAll('.flex-element-bottom');
+        const favHtmlBtn = document.createElement('button');
+        favHtmlBtn.className = 'flex-element add-favourite';
+        const checkDbFavourite = checkDbFav(i);
+
+        flexBtns[i].appendChild(favHtmlBtn);
+
+        if(checkDbFavourite){
+            favHtmlBtn.textContent = '❤';
+        }
+        else{
+            favHtmlBtn.textContent = '🤍';
+        }
+
     }
+    
     addToBasket();
+    checkFavBtn();
 };
 
-loadData();
 // Add to Basket
 function addToBasket () {
     const addBasket = document.querySelectorAll('.add-basket');
@@ -45,7 +62,7 @@ function addedItemsCounter (i) {
         }
     }
 }
-// Add to local storage
+// Add to db local storage
 function addToDb (i) {
     if(db.length === 0){
         db.push(data.women[i]);
@@ -67,4 +84,70 @@ function addToDb (i) {
         }
         
     }  
+}
+
+function checkFavBtn() {
+    const addFav = document.querySelectorAll('.add-favourite');
+    for(let i = 0; i < addFav.length; i++){
+        addFav[i].addEventListener('click', () => {
+            toggleBtn = !toggleBtn;
+            const checkDbFavourite = checkDbFav(i);
+            if(toggleBtn && checkDbFavourite !== true){
+                addToDbFav(i);
+            }
+            else {
+                removeFromDbFav(i)
+            }
+            location.reload();
+        });
+    }
+}
+
+function addToDbFav(i) {
+    let select = false;
+
+    if(dbFav.length === 0){
+        dbFav.push(data.women[i]);
+        localStorage.setItem('favourite', JSON.stringify(dbFav));
+    }
+    else{
+        for(let k = 0; k < dbFav.length; k++){
+            if(dbFav[k].id === data.women[i].id){
+                select = true;
+                break;
+            }
+        }
+        if(select === false){
+            dbFav.push(data.women[i]);
+            localStorage.setItem('favourite', JSON.stringify(dbFav));
+        }
+    }
+}
+
+function removeFromDbFav(i) {
+    for(let k = 0; k < dbFav.length; k++){
+        if(dbFav[k].id === data.women[i].id){
+            dbFav.splice(k,1);
+            localStorage.setItem('favourite', JSON.stringify(dbFav));
+        }
+    }
+}
+
+function checkDbFav(i) {
+    let select = false;
+    for(let k = 0; k < dbFav.length; k++){
+        if(dbFav[k].id === data.women[i].id){
+            select = true;
+            break;
+        }
+    }
+    return select;
+}
+
+if(dbFav.length === 0){
+    localStorage.removeItem('favourite');
+}
+
+window.onload = () => {
+    loadData();
 }
