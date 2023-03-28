@@ -35,7 +35,6 @@ function loadData() {
         }
 
     }
-    
     addToBasket();
     checkFavBtn();
 };
@@ -45,10 +44,12 @@ function addToBasket () {
     const addBasket = document.querySelectorAll('.add-basket');
 
     for(let i = 0; i < addBasket.length; i++){
+        
         addBasket[i].addEventListener('click', () => {
             addToDb(i);
             addedItemsCounter(i);
-            location.reload();
+            const allItem = counterSum();
+            basketCounter.textContent = `${allItem}`;
         });
     }
 };
@@ -93,12 +94,14 @@ function checkFavBtn() {
             toggleBtn = !toggleBtn;
             const checkDbFavourite = checkDbFav(i);
             if(toggleBtn && checkDbFavourite !== true){
+                addFav[i].textContent = '❤';
                 addToDbFav(i);
+                
             }
             else {
+                addFav[i].textContent = '🤍';
                 removeFromDbFav(i)
             }
-            location.reload();
         });
     }
 }
