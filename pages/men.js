@@ -13,7 +13,7 @@ function loadData() {
         </div>
         <div class="flex-element-bottom">
             <p class="flex-element price">$${data.men[i].price}</p>
-            <button class=" flex-element add-basket">Add to Basket</button>
+            <button class=" flex-element add-basket"><img class="add-basket-img" src="../images/basket.png"></button>
         </div>
         `;
 
