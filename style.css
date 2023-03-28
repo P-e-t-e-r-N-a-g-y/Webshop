@@ -79,14 +79,6 @@ body {
 }
 
 /* Login section */
-.login-title{
-    font-size: 1.5rem;
-}
-
-.signup-title {
-    font-size: 1.5rem;
-}
-
 .login-box {
     display: none;
     position: absolute;

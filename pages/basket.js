@@ -8,9 +8,8 @@ function loadData() {
         const cards = document.createElement('div');
         cards.className = 'basket-left-element';
         const totalAmount = basketTotalAmount();
-        let sumitems = 0;
 // Calculate the items amount
-        sumitems = db[i].price*db[i].counter;
+        let sumitems = sumItems(i);
         const html = `
         <div class="left-basket-element">
             <img class="basket-flex-element-img" src="${db[i].img}" alt="image">
@@ -36,6 +35,14 @@ function loadData() {
     }
 };
 
+function sumItems(i){
+    let sumitems = 0;
+
+    sumitems = db[i].price*db[i].counter;
+
+    return sumitems;
+}
+
 function basketTotalAmount() {
     let sum = 0;
 
@@ -49,19 +56,30 @@ function basketTotalAmount() {
 function manageBasketItemsNumber() {
     const plusButton = document.querySelectorAll('.plus');
     const minusButton = document.querySelectorAll('.minus');
+    const text = document.querySelectorAll('.basket-item-text');
+    const amount = document.querySelectorAll('.basket-flex-element');
+    const totalAm = document.querySelector('.basket-right-amount');
 
     for(let i = 0; i < plusButton.length; i++){
         plusButton[i].addEventListener('click', () => {
             db[i].counter += 1;
             localStorage.setItem('items', JSON.stringify(db));
-            location.reload();
+            text[i].textContent = db[i].counter;
+            let sumitems = sumItems(i);
+            amount[i].textContent = `$${sumitems}`;
+            let totalAmount = basketTotalAmount();
+            totalAm.textContent = `Total amount: $${totalAmount}`;
         });
 
         minusButton[i].addEventListener('click', () => {
             if(db[i].counter > 0){
                 db[i].counter -= 1;
                 localStorage.setItem('items', JSON.stringify(db));
-                location.reload();
+                text[i].textContent = db[i].counter;
+                let sumitems = sumItems(i);
+                amount[i].textContent = `$${sumitems}`;
+                let totalAmount = basketTotalAmount();
+                totalAm.textContent = `Total amount: $${totalAmount}`;
             }
             if(db[i].counter === 0){
                 db.splice(i,1);
