@@ -89,8 +89,8 @@ function addToDb (i) {
 function checkFavBtn() {
     const addFav = document.querySelectorAll('.add-favourite');
     for(let i = 0; i < addFav.length; i++){
+        toggleBtn = !toggleBtn;
         addFav[i].addEventListener('click', () => {
-            toggleBtn = !toggleBtn;
             const checkDbFavourite = checkDbFav(i);
             if(toggleBtn && checkDbFavourite !== true){
                 addFav[i].textContent = '❤';

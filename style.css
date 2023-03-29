@@ -28,6 +28,7 @@ body {
     margin: auto;
     padding: 0rem 2rem;
     gap: 1rem;
+    z-index: 1;
 }
 
 .nav-bar-left {
@@ -76,6 +77,11 @@ body {
 
 .counter {
     color: white;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
 }
 
 /* Login section */
@@ -191,7 +197,7 @@ body {
 }
 
 .fade {
-    height: 90vh;
+    height: 100vh;
     width: 100%;
     object-fit: cover;
 }
@@ -285,6 +291,14 @@ footer {
     width: 60%;
 }
 
+.add-basket:hover {
+    transform: scale(1.1);
+}
+
+.add-basket:active {
+    transform: scale(1);
+}
+
 .add-basket-img {
     height: 100%;
 }
@@ -298,6 +312,15 @@ footer {
     font-family: Permanent Marker, sans-serif;
     width: 15%;
 }
+
+.add-favourite:hover {
+    transform: scale(1.1);
+}
+
+.add-favourite:active {
+    transform: scale(1);
+}
+
 /* Basket page */
 .basket-flex-container {
     display: flex;
@@ -383,6 +406,7 @@ footer {
 .basket-right-amount {
     padding: 2rem;
     border: 1px solid black;
+    width: 20rem;
 }
 
 /* Popup */
