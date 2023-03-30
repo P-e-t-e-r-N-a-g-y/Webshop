@@ -13,33 +13,16 @@ function counterSum(){
   return sum;
 }
 
-// Login
-let loginBox = document.getElementById('login-box');
-let main = document.getElementById('main');
-const footer = document.querySelector('footer');
-
-document.querySelector('.login-btn').addEventListener('click', () => {
-    loginBox.style.display = 'block';
-    main.style.opacity = 0.1;
-    footer.style.opacity = 0.1;
-})
-
-document.querySelector('.close-btn').addEventListener('click', () => {
-    loginBox.style.display = 'none';
-    main.style.opacity = 1;
-    footer.style.opacity = 1;
-})
-
 // Sticky Nav bar elements
 let navBar = document.querySelector('.nav-bar-container');
 let navPos = navBar.getBoundingClientRect().top;
 // Sticky Nav bar
-window.addEventListener('scroll', e => {
+window.addEventListener('scroll', event => {
     let scrollPos = window.scrollY;
-    if(scrollPos >= navPos){
+    if(scrollPos > navPos){
         navBar.classList.add('sticky');
     } 
-    if(scrollPos === navPos) {
+    else {
         navBar.classList.remove('sticky');
     }
 });
