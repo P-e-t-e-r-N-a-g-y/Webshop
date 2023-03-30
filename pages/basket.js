@@ -110,19 +110,23 @@ delButton.addEventListener('click', () => {
     const yesBtn = document.querySelector('.yes-button');
     const noBtn = document.querySelector('.no-button');
     const main = document.querySelector('main');
+    const footer = document.querySelector('footer');
 
     popUp.style.display = 'block';
     main.style.opacity = 0.1;
+    footer.style.opacity = 0.1;
 
     yesBtn.addEventListener('click', () => {
         localStorage.removeItem('items');
         location.reload();
         popUp.style.display = 'none';
         main.style.opacity = 1;
+        footer.style.opacity = 1;
     });
 
     noBtn.addEventListener('click', () => {
         popUp.style.display = 'none';
         main.style.opacity = 1;
+        footer.style.opacity = 1;
     });
 });
