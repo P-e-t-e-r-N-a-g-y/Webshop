@@ -26,3 +26,16 @@ window.addEventListener('scroll', event => {
         navBar.classList.remove('sticky');
     }
 });
+
+// Loading the cards
+
+    // const searchButton = document.querySelector('.search-button');
+    const searchText = document.querySelector('.search-text');
+    const menBtn = document.querySelector('.men-btn');
+    const womenBtn = document.querySelector('.women-btn');
+    let category = "";
+    // let text = searchText.value;
+
+    // searchButton.addEventListener('click', searchBar)
+    menBtn.addEventListener('click', () => category = "women");
+    womenBtn.addEventListener('click', () => category = "women");

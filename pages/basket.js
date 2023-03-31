@@ -4,7 +4,7 @@ const delButton = document.querySelector('.delete-button');
 function loadData() {
     for(let i = 0; i < db.length; i++){
         const containerLeft = document.querySelector('.basket-left');
-        const containerRight = document.querySelector('.basket-right');
+        const containerRight = document.querySelector('.total-amount');
         const cards = document.createElement('div');
         cards.className = 'basket-left-element';
         const totalAmount = basketTotalAmount();
@@ -25,13 +25,10 @@ function loadData() {
 
     `;
 
-    const htmlTotalAmount = `
-        <p class="basket-right-amount">Total amount: $${totalAmount}</p>
-    `
     containerLeft.appendChild(cards);
     cards.innerHTML = html;
 
-    containerRight.innerHTML = htmlTotalAmount;
+    containerRight.textContent = `$${totalAmount}`;
     }
 };
 
@@ -58,7 +55,7 @@ function manageBasketItemsNumber() {
     const minusButton = document.querySelectorAll('.minus');
     const text = document.querySelectorAll('.basket-item-text');
     const amount = document.querySelectorAll('.basket-flex-element');
-    const totalAm = document.querySelector('.basket-right-amount');
+    const totalAm = document.querySelector('.total-amount');
 
     for(let i = 0; i < plusButton.length; i++){
         plusButton[i].addEventListener('click', () => {
@@ -68,7 +65,7 @@ function manageBasketItemsNumber() {
             let sumitems = sumItems(i);
             amount[i].textContent = `$${sumitems}`;
             let totalAmount = basketTotalAmount();
-            totalAm.textContent = `Total amount: $${totalAmount}`;
+            totalAm.textContent = `$${totalAmount}`;
         });
 
         minusButton[i].addEventListener('click', () => {
@@ -79,7 +76,7 @@ function manageBasketItemsNumber() {
                 let sumitems = sumItems(i);
                 amount[i].textContent = `$${sumitems}`;
                 let totalAmount = basketTotalAmount();
-                totalAm.textContent = `Total amount: $${totalAmount}`;
+                totalAm.textContent = `$${totalAmount}`;
             }
             if(db[i].counter === 0){
                 db.splice(i,1);
@@ -104,6 +101,19 @@ else{
         manageBasketItemsNumber();
     }
 }
+
+// Sticky Total Amount
+let totAmo = document.querySelector('.basket-right-item');
+
+window.addEventListener('scroll', event => {
+    let scrollPos = window.scrollY;
+    if(scrollPos > navPos){
+        totAmo.classList.add('stickytotAmo');
+    } 
+    else {
+        totAmo.classList.remove('stickytotAmo');
+    }
+});
 
 delButton.addEventListener('click', () => {
     const popUp = document.querySelector('.popup');

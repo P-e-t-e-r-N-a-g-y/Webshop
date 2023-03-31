@@ -84,6 +84,23 @@ body {
     top: 0;
 }
 
+.stickytotAmo {
+    position: fixed;
+    top: 6.3rem;
+}
+
+.search-text {
+    background-color: white;
+    font-family: Arial, sans-serif;
+    height: 2rem;
+    border-radius: 5px;
+}
+
+.search-button {
+    border: none;
+    background-color: black;
+}
+
 /* Slideshow */
 .img-container {
     display: flex;
@@ -271,7 +288,6 @@ footer {
 /* Basket page */
 .basket-flex-container {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     margin: 1rem auto;
     gap: 1rem;
@@ -350,9 +366,11 @@ footer {
     font-size: 1rem;
 }
 
-.basket-right-amount {
+.basket-right-item {
+    position: fixed;
     padding: 2rem;
-    border: 1px solid black;
+    background-color: #dfdfdf83;
+    border-radius: 5px;
     width: 20rem;
 }
 
@@ -375,7 +393,6 @@ footer {
 
 .popup-elements-button {
     cursor: pointer;
-    font-family: Permanent Marker, sans-serif;
     background-color: black;
     color: white;
     border-radius: 5px;
@@ -454,6 +471,8 @@ footer {
     justify-content: left;
     gap: 1rem;
     padding: 1rem;
+    margin: auto;
+    width: 100%;
 }
 
 .login-text {
