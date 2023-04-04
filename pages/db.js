@@ -1,5 +1,5 @@
 const data = {
-  "items": [
+  "men": [
       {
         "id": 101,
         "title": "jeans",
@@ -146,8 +146,10 @@ const data = {
         "category": "men",
         "img": "../images/men/men_tshirt-0012.webp",
         "price": 3
-      },
-      {
+      }
+    ],
+      "women": [
+        {
         "id": 201,
         "title": "jeans",
         "category": "women",

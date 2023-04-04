@@ -1,17 +1,18 @@
-'use strict';   
+
 function loadData(category, title) {
-    console.log(category);
-    for(let i = 0; i < data.items.length; i++){
+    console.log(items);
+    for(let i = 0; i < items.length; i++){
         const container = document.querySelector('.flex-container');
         const cards = document.createElement('div');
         cards.className = 'flex-box';
         const html = `
         <div class="flex-element-top">
-            <img class="flex-element-img" src="${data.items[i].img}" alt="image">
+            <img class="flex-element-img" src="${items[i].img}" alt="image">
         </div>
         <div class="flex-element-bottom">
-            <p class="flex-element price">$${data.items[i].price}</p>
+            <p class="flex-element price">$${items[i].price}</p>
             <button class=" flex-element add-basket"><img class="add-basket-img" src="../images/basket.png"></button>
+            <button class=" flex-element add-favourite">🤍</button>
         </div>
         `;
         let filter = searchBar(i,category,title);
@@ -20,18 +21,11 @@ function loadData(category, title) {
             container.appendChild(cards);
             cards.innerHTML = html;
     
-            const flexBtns = document.querySelectorAll('.flex-element-bottom');
-            const favHtmlBtn = document.createElement('button');
-            favHtmlBtn.className = 'flex-element add-favourite';
+            const favBtn = document.querySelectorAll('.add-favourite');
             const checkDbFavourite = checkDbFav(i);
     
-            flexBtns[i].appendChild(favHtmlBtn);
-    
             if(checkDbFavourite){
-                favHtmlBtn.textContent = '❤';
-            }
-            else{
-                favHtmlBtn.textContent = '🤍';
+                favBtn[i].textContent = "❤";
             }
         }
     }
@@ -56,7 +50,7 @@ function addToBasket () {
 // Basket items counter
 function addedItemsCounter (i) {
     for(let k = 0; k < db.length; k++){
-        if(db[k].id === data.items[i].id){
+        if(db[k].id === items[i].id){
             db[k].counter += 1;
             localStorage.setItem('items',JSON.stringify(db));
             break;
@@ -66,20 +60,20 @@ function addedItemsCounter (i) {
 // Add to db local storage
 function addToDb (i) {
     if(db.length === 0){
-        db.push(data.items[i]);
+        db.push(items[i]);
         db[0].counter = 0;
         localStorage.setItem('items', JSON.stringify(db));
     }
     else{
         let select = false;
         for(let k = 0; k < db.length; k++){
-            if(db[k].id === data.items[i].id){
+            if(db[k].id === items[i].id){
                 select = true;
                 break;
             }
         }
         if(select === false){
-            db.push(data.items[i]);
+            db.push(items[i]);
             db[db.length-1].counter = 0;
             localStorage.setItem('items', JSON.stringify(db));
         }
@@ -111,18 +105,18 @@ function addToDbFav(i) {
     let select = false;
 
     if(dbFav.length === 0){
-        dbFav.push(data.items[i]);
+        dbFav.push(items[i]);
         localStorage.setItem('favourite', JSON.stringify(dbFav));
     }
     else{
         for(let k = 0; k < dbFav.length; k++){
-            if(dbFav[k].id === data.items[i].id){
+            if(dbFav[k].id === items[i].id){
                 select = true;
                 break;
             }
         }
         if(select === false){
-            dbFav.push(data.items[i]);
+            dbFav.push(items[i]);
             localStorage.setItem('favourite', JSON.stringify(dbFav));
         }
     }
@@ -130,7 +124,7 @@ function addToDbFav(i) {
 // Remove from dbFav local storage
 function removeFromDbFav(i) {
     for(let k = 0; k < dbFav.length; k++){
-        if(dbFav[k].id === data.items[i].id){
+        if(dbFav[k].id === items[i].id){
             dbFav.splice(k,1);
             localStorage.setItem('favourite', JSON.stringify(dbFav));
         }
@@ -140,7 +134,7 @@ function removeFromDbFav(i) {
 function checkDbFav(i) {
     let select = false;
     for(let k = 0; k < dbFav.length; k++){
-        if(dbFav[k].id === data.items[i].id){
+        if(dbFav[k].id === items[i].id){
             select = true;
             break;
         }
@@ -151,10 +145,10 @@ function checkDbFav(i) {
 function searchBar(i,category,title) {
     let select = false;
 
-    if(category === data.items[i].category){
+    if(category === items[i].category){
         select = true;
     }
-        // data.items[i].title
+        // items[i].title
 
     return select;
 }
@@ -164,7 +158,13 @@ if(dbFav.length === 0){
     localStorage.removeItem('favourite');
 }
 
-console.log(category);
+if(category === "men"){
+    items = data.men;
+}
+else if(category === "women"){
+    items = data.women;
+}
+
 loadData(category);
 
 
