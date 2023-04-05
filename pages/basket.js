@@ -66,6 +66,8 @@ function manageBasketItemsNumber() {
             amount[i].textContent = `$${sumitems}`;
             let totalAmount = basketTotalAmount();
             totalAm.textContent = `$${totalAmount}`;
+            const allItem = counterSum();
+            basketCounter.textContent = `${allItem}`;
         });
 
         minusButton[i].addEventListener('click', () => {
@@ -77,6 +79,8 @@ function manageBasketItemsNumber() {
                 amount[i].textContent = `$${sumitems}`;
                 let totalAmount = basketTotalAmount();
                 totalAm.textContent = `$${totalAmount}`;
+                const allItem = counterSum();
+                basketCounter.textContent = `${allItem}`;
             }
             if(db[i].counter === 0){
                 db.splice(i,1);

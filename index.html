@@ -14,17 +14,28 @@
     <header>
         <div class="nav-bar-container">
             <div class="nav-bar-left">
-                <a href="index.html" class="nav-bar-element"><h1>Best Fashion</h1></a>
+                <a href="../index.html" class="nav-bar-element-left"><h1>Best Fashion</h1></a>
+                <img class="nav-bar-element-left favicon-img" src="images/favicon.png" alt="img">
+                <button class="nav-bar-element-left nav-toggle">
+                    <span class="hamburger">&#9776;</span>
+                </button>
             </div>
             <div class="nav-bar-center">
                 <a href="pages\whats_new.html" class="nav-bar-element">WHAT'S NEW</a>
-                <a href="pages\items.html" class="nav-bar-element women-btn">WOMEN</a>
-                <a href="pages\items.html" class="nav-bar-element men-btn">MEN</a>
+                <a href="./pages/items.html" class="nav-bar-element women-btn">WOMEN</a>
+                <a href="./pages/items.html" class="nav-bar-element men-btn">MEN</a>
             </div>
             <div class="nav-bar-right">
-                <a href="./pages/login.html" class="nav-bar-element login-btn" id="login-btn"><img class="icons" src="images\user_icon.png" alt="Log in"></a>
-                <a href="pages\favourite.html" class="nav-bar-element"><img class="icons" src="images\heart.png"></img></a>
-                <a href="pages\basket.html" class="nav-bar-element"><img class="icons" src="images\basket.png"><span class="counter">0</span></a>
+                <div class="nav-bar-element-right">
+                    <input  class="nav-bar-element-search search-text" type="text" placeholder="Search..." />
+                    <a href="./pages/items.html" class="nav-bar-element-search search-button" onclick="textWrapper()"><img class="icons" src="../images/search.png" alt="img"></a>
+                </div>
+                <a href="./pages/login.html" class="nav-bar-element-right login-btn" id="login-btn"><img class="icons" src="images\user_icon.png" alt="Log in"></a>
+                <a href="pages\favourite.html" class="nav-bar-element-right"><img class="icons" src="images\heart.png"></img></a>
+                <div class="nav-bar-element-right">
+                    <a href="../pages/basket.html" class="nav-bar-element-basket"><img class="icons" src="../images/basket.png"></a>
+                    <span class="nav-bar-element-basket counter">0</span>
+                </div>
             </div>
         </div>
     </header>
@@ -47,8 +58,8 @@
                 <span class="dot dot3" onclick="currentSlide(3)"></span>
             </div>
         </div>
-        <a class="section" href="pages\men.html"><img class="section-img1" src="./images/men/men_tshirt-0008.webp" alt=""></a>
-        <a class="section" href="pages\women.html"><img class="section-img2" src="./images/women/women_tshirt-0008.webp" alt=""></a>
+        <a class="section menIndex-btn" href="./pages/items.html"><img class="section-img" src="./images/men/men_tshirt-0008.webp" alt=""></a>
+        <a class="section womenIndex-btn" href="./pages/items.html"><img class="section-img" src="./images/women/women_tshirt-0004.webp" alt=""></a>
     </main>
     <footer>
         <p>Contact: </p>

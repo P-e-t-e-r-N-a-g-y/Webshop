@@ -14,7 +14,7 @@
     <header>
         <div class="nav-bar-container">
             <div class="nav-bar-left">
-                <a href="../index.html" class="nav-bar-element"><h1>Best Fashion</h1></a>
+                <a href="../index.html" class="nav-bar-element-left"><h1>Best Fashion</h1></a>
             </div>
             <div class="nav-bar-center">
                 <a href="whats_new.html" class="nav-bar-element">WHAT'S NEW</a>
@@ -22,9 +22,16 @@
                 <a href="items.html" class="nav-bar-element men-btn">MEN</a>
             </div>
             <div class="nav-bar-right">
-                <a href="login.html" class="nav-bar-element login-btn" id="login-btn"><img class="icons" src="../images/user_icon.png" alt="Log in"></a>
-                <a href="favourite.html" class="nav-bar-element"><img class="icons" src="../images/heart.png"></img></a>
-                <div class="nav-bar-element"><img class="icons" src="../images/basket.png"><span class="counter">0</span></div>
+                <div class="nav-bar-element-right">
+                    <input  class="nav-bar-element-search search-text" type="text" placeholder="Search..." />
+                    <a href="items.html" class="nav-bar-element-search search-button" onclick="textWrapper()"><img class="icons" src="../images/search.png" alt="img"></a>
+                </div>
+                <a href="login.html" class="nav-bar-element-right login-btn" id="login-btn"><img class="icons" src="../images/user_icon.png" alt="Log in"></a>
+                <a href="favourite.html" class="nav-bar-element-right"><img class="icons" src="../images\heart.png"></img></a>
+                <div class="nav-bar-element-right">
+                    <a href="basket.html" class="nav-bar-element-basket"><img class="icons" src="../images/basket.png"></a>
+                    <span class="nav-bar-element-basket counter">0</span>
+                </div>
             </div>
         </div>
         <div class="popup">

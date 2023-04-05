@@ -1,6 +1,7 @@
+let title = '';
+let items = data;
 
 function loadData(category, title) {
-    console.log(items);
     for(let i = 0; i < items.length; i++){
         const container = document.querySelector('.flex-container');
         const cards = document.createElement('div');
@@ -38,7 +39,6 @@ function addToBasket () {
     const addBasket = document.querySelectorAll('.add-basket');
 
     for(let i = 0; i < addBasket.length; i++){
-        
         addBasket[i].addEventListener('click', () => {
             addToDb(i);
             addedItemsCounter(i);
@@ -145,10 +145,9 @@ function checkDbFav(i) {
 function searchBar(i,category,title) {
     let select = false;
 
-    if(category === items[i].category){
+    if(category === items[i].category && title === items[i].title || title === ''){
         select = true;
     }
-        // items[i].title
 
     return select;
 }
@@ -164,8 +163,7 @@ if(category === "men"){
 else if(category === "women"){
     items = data.women;
 }
-
-loadData(category);
+loadData(category,title);
 
 
 

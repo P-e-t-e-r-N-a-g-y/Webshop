@@ -1,4 +1,6 @@
 'use strict';
+const menIndexBtn = document.querySelector('.menIndex-btn');
+const womenIndexBtn = document.querySelector('.womenIndex-btn');
 // Slideshow
 let slideIndex = 1;
 showSlides(slideIndex);
@@ -31,6 +33,14 @@ function showSlides(n) {
     slides[slideIndex-1].style.display = 'block';
     dots[slideIndex-1].className += ' active';
 }
+
+// Set filter to the database
+menIndexBtn.addEventListener('click', () => {
+    sessionStorage.setItem('category','men');
+});
+womenIndexBtn.addEventListener('click', () => {
+    sessionStorage.setItem('category','women');
+});
 
 
 
