@@ -57,18 +57,21 @@ window.addEventListener('scroll', (event) => {
 });
 
 hambToggle.addEventListener('click', () => {
-    
+    const navBarCent = document.querySelector('.nav-bar-center');
+    const navBarCont = document.querySelector('.nav-bar-container');
+    navBarCent.classList.toggle('active');
+    navBarCont.classList.toggle('active');
 })
 
 // Set filter to the database
-    menBtn.addEventListener('click', () => {
-        sessionStorage.setItem('category','men');
-    });
-    womenBtn.addEventListener('click', () => {
-        sessionStorage.setItem('category','women');
-    });
-    searchText.addEventListener('keypress', (e)=>{
-        if(e.key === "Enter"){
-            textWrapper();
-        }
-    });
+menBtn.addEventListener('click', () => {
+    sessionStorage.setItem('category','men');
+});
+womenBtn.addEventListener('click', () => {
+    sessionStorage.setItem('category','women');
+});
+searchText.addEventListener('keypress', (e)=>{
+    if(e.key === "Enter"){
+        textWrapper();
+    }
+});
