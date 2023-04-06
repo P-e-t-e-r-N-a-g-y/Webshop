@@ -11,9 +11,7 @@ const searchText = document.querySelector('.search-text');
 const basketCounter = document.querySelector('.counter');
 const allItem = counterSum();
 basketCounter.textContent = `${allItem}`;
-// Sticky Nav bar elements
-let navBar = document.querySelector('.nav-bar-container');
-let navPos = navBar.getBoundingClientRect().top;
+// Nav bar elements
 const hambToggle = document.querySelector('.nav-toggle');
 // Render the actual items number
 function counterSum(){
@@ -44,17 +42,6 @@ function textWrapper() {
         }
     }
 }
-
-// Sticky Nav bar
-window.addEventListener('scroll', (event) => {
-    let scrollPos = window.scrollY;
-    if(scrollPos > navPos){
-        navBar.classList.add('sticky');
-    } 
-    else {
-        navBar.classList.remove('sticky');
-    }
-});
 
 hambToggle.addEventListener('click', () => {
     const navBarCent = document.querySelector('.nav-bar-center');
