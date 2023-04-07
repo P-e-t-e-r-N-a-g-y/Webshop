@@ -364,6 +364,7 @@ footer {
 .basket-left {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .basket-left-element {
@@ -398,7 +399,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: end;
-
     margin: 1rem;
 }
 
@@ -622,16 +622,28 @@ footer {
         margin-bottom: 2rem;
     }
 
+    .counter {
+        position: absolute;
+        top: -0.2rem;
+        right: -0.5rem;
+        background-color: rgb(255, 0, 0);
+        font-size: 0.6rem;
+        border-radius: 50%;
+        height: 1.4rem;
+        width: 1.4rem;
+        color: black;
+    }
+
     .flex-container {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
     
     .new-section {
-        width: 100%;
+        width: 70%;
     }
 
     .new-img {
-        width: 90%;
+        width: 100%;
     }
 
     .new-img1 {
